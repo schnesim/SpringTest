@@ -1,0 +1,35 @@
+target/
+/mvnw.bat
+/mvnw.cmd
+/mvnw
+/.mvn/
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+nbactions.xml
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+
+### macOS ###
+.DS_Store
+.scannerwork
