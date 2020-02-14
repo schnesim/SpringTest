@@ -1,5 +1,6 @@
 package de.allianz.test;
 
+import de.allianz.test.model.JasonModel;
 import de.allianz.test.model.Table2;
 import de.allianz.test.model.Table1;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.UUID;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
 public class Endpoints {
@@ -24,5 +27,11 @@ public class Endpoints {
         repo.save(t1);
 
         return "done";
+    }
+
+    @PostMapping(name = "/post0r", consumes = {"application/json"})
+    public String somePostEndpoint(@RequestBody JasonModel model) {
+        System.out.println(model.getName());
+        return "I did it";
     }
 }
