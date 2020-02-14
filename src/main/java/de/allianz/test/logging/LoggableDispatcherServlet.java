@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.DispatcherServlet;
 import org.springframework.web.servlet.HandlerExecutionChain;
 import org.springframework.web.util.ContentCachingRequestWrapper;
@@ -17,16 +16,8 @@ import org.springframework.web.util.WebUtils;
  */
 public class LoggableDispatcherServlet extends DispatcherServlet {
 
-    @Autowired
-    private LoggingConfigurationBean loggingConfig;
-    
     @Override
     protected void doDispatch(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        
-        if(!loggingConfig.isRestLoggingEnabled()) {
-            super.doDispatch(request, response);
-            return;
-        }
         
         if (!(request instanceof ContentCachingRequestWrapper)) {
             request = new ContentCachingRequestWrapper(request);
@@ -45,8 +36,8 @@ public class LoggableDispatcherServlet extends DispatcherServlet {
     }
 
     private void log(HttpServletRequest requestToCache, HttpServletResponse responseToCache, HandlerExecutionChain handler) {
-        System.out.println(getRequestPayload(requestToCache));
-        System.out.println(getResponsePayload(responseToCache));
+        System.out.println("Request: " + getRequestPayload(requestToCache));
+        System.out.println("Response: " + getResponsePayload(responseToCache));
     }
     
     private String getRequestPayload(HttpServletRequest request) {

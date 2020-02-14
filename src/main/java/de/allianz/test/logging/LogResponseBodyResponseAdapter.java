@@ -1,5 +1,6 @@
 package de.allianz.test.logging;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
@@ -11,6 +12,11 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 
 @ControllerAdvice
 public class LogResponseBodyResponseAdapter implements ResponseBodyAdvice<Object> {
+    
+    @Autowired
+    private LoggingConfigurationBean logConfig;
+
+    private Logger l = new Logger();
 
     @Override
     public boolean supports(MethodParameter methodParameter,
@@ -26,9 +32,11 @@ public class LogResponseBodyResponseAdapter implements ResponseBodyAdvice<Object
         if (request instanceof ServletServerHttpRequest
                 && response instanceof ServletServerHttpResponse) {
             Logger l = new Logger();
-            l.logResponse(
-                    ((ServletServerHttpRequest) request).getServletRequest(),
-                    ((ServletServerHttpResponse) response).getServletResponse(), body);
+            if (logConfig.isRestLoggingEnabled()) {
+                l.logResponse(
+                        ((ServletServerHttpRequest) request).getServletRequest(),
+                        ((ServletServerHttpResponse) response).getServletResponse(), body);
+            }
         }
 
         return body;
