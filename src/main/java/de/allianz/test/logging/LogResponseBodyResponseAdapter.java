@@ -1,6 +1,5 @@
-package de.allianz.test.interceptor;
+package de.allianz.test.logging;
 
-import de.allianz.test.Logger;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;

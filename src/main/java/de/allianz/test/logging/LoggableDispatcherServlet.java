@@ -1,9 +1,10 @@
-package de.allianz.test;
+package de.allianz.test.logging;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.DispatcherServlet;
 import org.springframework.web.servlet.HandlerExecutionChain;
 import org.springframework.web.util.ContentCachingRequestWrapper;
@@ -16,8 +17,17 @@ import org.springframework.web.util.WebUtils;
  */
 public class LoggableDispatcherServlet extends DispatcherServlet {
 
+    @Autowired
+    private LoggingConfigurationBean loggingConfig;
+    
     @Override
     protected void doDispatch(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        
+        if(!loggingConfig.isRestLoggingEnabled()) {
+            super.doDispatch(request, response);
+            return;
+        }
+        
         if (!(request instanceof ContentCachingRequestWrapper)) {
             request = new ContentCachingRequestWrapper(request);
         }

@@ -1,6 +1,5 @@
-package de.allianz.test.interceptor;
+package de.allianz.test.logging;
 
-import de.allianz.test.Logger;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.boot.web.servlet.DispatcherType;

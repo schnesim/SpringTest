@@ -1,4 +1,4 @@
-package de.allianz.test;
+package de.allianz.test.logging;
 
 import java.util.Collection;
 import java.util.Enumeration;

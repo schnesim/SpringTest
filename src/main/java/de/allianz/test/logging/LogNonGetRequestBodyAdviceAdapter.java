@@ -1,6 +1,5 @@
-package de.allianz.test.interceptor;
+package de.allianz.test.logging;
 
-import de.allianz.test.Logger;
 import java.lang.reflect.Type;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;

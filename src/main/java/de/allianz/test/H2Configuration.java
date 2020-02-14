@@ -1,5 +1,6 @@
 package de.allianz.test;
 
+import de.allianz.test.logging.LoggableDispatcherServlet;
 import org.h2.server.web.WebServlet;
 import org.springframework.boot.autoconfigure.web.servlet.DispatcherServletAutoConfiguration;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
