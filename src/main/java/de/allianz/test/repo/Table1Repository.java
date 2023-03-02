@@ -1,4 +1,4 @@
-package de.allianz.test;
+package de.allianz.test.repo;
 
 import de.allianz.test.model.Table1;
 import org.springframework.data.repository.CrudRepository;

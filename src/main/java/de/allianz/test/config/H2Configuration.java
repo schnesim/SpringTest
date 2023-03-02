@@ -1,4 +1,4 @@
-package de.allianz.test;
+package de.allianz.test.config;
 
 import de.allianz.test.logging.LoggableDispatcherServlet;
 import org.h2.server.web.WebServlet;
