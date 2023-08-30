@@ -1,10 +1,7 @@
 package de.allianz.test.model;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 
 @Entity
 public class Address {
@@ -12,7 +9,6 @@ public class Address {
     @Id
     private String id;
 
-    @JoinColumn(name = "personId", referencedColumnName = "id")
     private String personId;
     
     private String city;
